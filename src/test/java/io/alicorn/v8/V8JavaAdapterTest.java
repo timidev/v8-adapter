@@ -159,7 +159,8 @@ public class V8JavaAdapterTest {
 
     private static final class FooInterceptor implements V8JavaClassInterceptor<InterceptableFoo> {
 
-        @Override public String getConstructorScriptBody() {
+        //@Override
+        public String getConstructorScriptBody() {
             return "var i = 0;\n" +
                     "this.getI = function() { return i; };\n" +
                     "this.setI = function(other) { i = other; };\n" +
@@ -168,11 +169,13 @@ public class V8JavaAdapterTest {
                     "this.onJ2V8Extract = function(context) { context.set(\"i\", i); };";
         }
 
-        @Override public void onInject(V8JavaClassInterceptorContext context, InterceptableFoo object) {
+        //@Override
+        public void onInject(V8JavaClassInterceptorContext context, InterceptableFoo object) {
             context.set("i", object.i);
         }
 
-        @Override public void onExtract(V8JavaClassInterceptorContext context, InterceptableFoo object) {
+        //@Override
+        public void onExtract(V8JavaClassInterceptorContext context, InterceptableFoo object) {
             object.i = V8JavaObjectUtils.widenNumber(context.get("i"), Integer.class);
         }
     }
@@ -207,13 +210,15 @@ public class V8JavaAdapterTest {
     @Test
     public void shouldInjectObjects() {
         V8JavaAdapter.injectObject("bar", new Bar() {
-            @Override public int doInterface(int args) {
+            //@Override
+            public int doInterface(int args) {
                 return args * 2;
             }
         }, v8);
         Assert.assertEquals(10, v8.executeIntegerScript("bar.doInterface(5);"));
         V8JavaAdapter.injectObject("bar", new Bar() {
-            @Override public int doInterface(int args) {
+            //@Override
+            public int doInterface(int args) {
                 return args * 4;
             }
         }, v8);

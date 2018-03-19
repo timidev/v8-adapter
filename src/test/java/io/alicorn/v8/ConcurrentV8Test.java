@@ -33,10 +33,11 @@ public class ConcurrentV8Test {
         final ConcurrentV8 v8 = new ConcurrentV8();
 
         Thread thread1 = new Thread(new Runnable() {
-            @Override public void run() {
+            //@Override
+            public void run() {
                 try {
                     v8.run(new ConcurrentV8Runnable() {
-                        @Override
+                        //@Override
                         public void run(V8 v8) {
                             v8.executeVoidScript("var i = 3000;");
                         }
@@ -55,10 +56,11 @@ public class ConcurrentV8Test {
         }
 
         Thread thread2 = new Thread(new Runnable() {
-            @Override public void run() {
+            //@Override
+            public void run() {
                 try {
                     v8.run(new ConcurrentV8Runnable() {
-                        @Override
+                        //@Override
                         public void run(V8 v8) {
                             v8.executeVoidScript("i += 344;");
                         }
@@ -78,7 +80,7 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     Assert.assertEquals(3344, v8.executeIntegerScript("i"));
                 }
@@ -100,7 +102,7 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     V8JavaAdapter.injectClass(Foo.class, v8);
                 }
@@ -113,7 +115,7 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     temp = v8.executeIntegerScript("var x = new Foo(30); x.getThing();");
                 }
@@ -126,7 +128,7 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     V8JavaAdapter.injectObject("fooey", new Foo(9001), v8);
                 }
@@ -139,7 +141,7 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     temp = v8.executeIntegerScript("fooey.getVal();");
                 }
@@ -157,7 +159,7 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     V8JavaAdapter.injectClass(Foo.class, v8);
                 }
@@ -168,7 +170,8 @@ public class ConcurrentV8Test {
 
         try {
             v8.run(new ConcurrentV8Runnable() {
-                @Override public void run(V8 v8) throws Exception {
+                //@Override
+                public void run(V8 v8) throws Exception {
                     v8.executeScript("var x = new Foo(33); x.whine();");
                 }
             });
