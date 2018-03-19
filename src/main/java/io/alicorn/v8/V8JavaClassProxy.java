@@ -415,7 +415,8 @@ final class V8JavaClassProxy implements JavaCallback {
      * @param receiver Java Script object that will represent the Java object.
      * @param parameters Parameters to use when constructing the Java object.
      */
-    @Override public Object invoke(V8Object receiver, V8Array parameters) {
+    //@Override
+    public Object invoke(V8Object receiver, V8Array parameters) {
         //Attempt to discover a matching constructor for the arguments we've been passed.
         Object[] coercedArguments = null;
         Constructor coercedConstructor = null;

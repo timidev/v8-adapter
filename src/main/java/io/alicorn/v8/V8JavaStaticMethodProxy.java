@@ -22,7 +22,8 @@ class V8JavaStaticMethodProxy extends V8JavaMethodProxy implements JavaCallback 
         this.cache = cache;
     }
 
-    @Override public Object invoke(V8Object receiver, V8Array parameters) {
+    //@Override
+    public Object invoke(V8Object receiver, V8Array parameters) {
         //See if a method exists.
         Object[] coercedArguments = null;
         Method coercedMethod = null;

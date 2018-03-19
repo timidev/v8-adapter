@@ -35,8 +35,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Target 1.6 to support Android and embedded systems. -->
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.5</maven.compiler.source>
+        <maven.compiler.target>1.5</maven.compiler.target>
 
         <!-- Datestamp -->
         <datestamp>${maven.build.timestamp}</datestamp>
@@ -150,6 +150,14 @@
                     <groupId>com.eclipsesource.j2v8</groupId>
                     <artifactId>j2v8_win32_x86_64</artifactId>
                     <version>${j2v8-version}</version>
+                    <optional>true</optional>
+                    <scope>system</scope>
+                    <systemPath>D:\J2V8\build.out\j2v8_win32_x86_64-4.8.0-SNAPSHOT.jar</systemPath>
+                </dependency>
+                <dependency>
+                    <groupId>org.livetribe</groupId>
+                    <artifactId>livetribe-jsr223</artifactId>
+                    <version>2.0.7</version>
                     <optional>true</optional>
                 </dependency>
             </dependencies>

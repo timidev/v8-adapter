@@ -92,7 +92,7 @@ public class ConcurrentV8 {
         if (v8 != null && !v8.isReleased()) {
             // Release the V8 instance from the V8 thread context.
             run(new ConcurrentV8Runnable() {
-                @Override
+                //@Override
                 public void run(V8 v8) throws Exception {
                     if (v8 != null && !v8.isReleased()) {
                         v8.release();

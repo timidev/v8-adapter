@@ -95,7 +95,8 @@ public final class V8JavaObjectUtils {
             v8Resources.add(new WeakReference<V8Value>(this.function));
         }
 
-        @Override public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        //@Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             try {
                 V8Array v8Args = translateJavaArgumentsToJavascript(args, V8JavaObjectUtils.getRuntimeSarcastically(receiver), cache);
                 Object obj = function.call(receiver, v8Args);
